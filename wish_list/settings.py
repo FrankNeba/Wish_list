@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-40zd6kc%pvz3sz82=fql6z9xn@a+i0a^ujj028$h#f&=a8gqs#
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://wishlist-production-ceda.up.railway.app']
 
 
 # Application definition
@@ -119,7 +120,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-CSRF_TRUSTED_ORIGINS = ['https://wishlist-production-ceda.up.railway.app']
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
