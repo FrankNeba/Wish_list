@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+    <form 
+        action=""
+        method="post"
+        >
+        {% csrf_token %}
+       
+        
+        <div>
+            <label for="email">email</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+       
+
+        <div>
+            <label for="password">password</label>
+            <input type="password" name="password" id="password" required>
+
+        </div>
+
+      
+        
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? 
+        <a href="{% url 'signup' %}">Signup</a>
+    </p>
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <p>error: {{message}}</p>
+
+    {% else %}
+    <p>success: {{message}} </p>
+    {%endif%}
+
+    {% endfor %}
+</body>
+</html>

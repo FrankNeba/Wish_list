@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Wish| home</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+   {% include 'navbar.html' %}
+   {% if not user.is_authenticated %}
+   <h1>Welcome to Christmas wishes</h1>
+   {% else %}
+   <h1>Welcome {{user.username|capfirst}}</h1>
+   <h2> {{user.username|capfirst}}'s Wishes</h2>
+   {% endif %}
+
+   
+   <div>
+    {% for wish in wishes%}
+    <div class="wishbox">
+        <h3 >
+            {{wish.name}}
+        </h3>
+
+        <p>{{wish.description}}</p>
+
+        {% if wish.user == request.user %}
+        <div class="update">
+            <a href="{% url 'edit' wish.id %}" style="color: rgb(0, 48, 0);">edit</a>
+
+            <a href="{% url 'delete' wish.id %}" style="color: red;">delete</a>
+
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    </div>
+
+    <div>
+        <h2>Let your Friends and family know what you wish to get from them for Christmas</h2>
+    </div>
+    {% if request.user.is_authenticated %}
+    <p>Copy the link below and share for others to see your wish list</p>
+
+    <div class="copy">
+        <p id="textToCopy">
+            {{link}}{{user.username}}    
+        </p>
+        <button onclick="copyText()">Copy</button>
+       
+    </div>
+
+   
+   
+    <p id="copyMessage" style="color: green; display: none;">Text copied!</p>
+    {% else %}
+    <p style="font-size: larger;">
+        <a href="{% url 'signup' %}">Join</a>
+        and list your own christmas wishes
+    </p>
+    {%endif %}
+
+    <script>
+        function copyText() {
+            
+            const textElement = document.getElementById('textToCopy');
+            const text = textElement.textContent || textElement.innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+               
+                const message = document.getElementById('copyMessage');
+                message.style.display = 'block';
+
+                
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 5000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

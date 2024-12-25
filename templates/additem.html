@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+    <form 
+        action=""
+        method="post"
+        >
+        {% csrf_token %}
+       
+        
+        <div>
+            <label for="name">Item Name</label>
+            <input type="text" name="name" id="name" value="{{item.name}}" required>
+        </div>
+       
+
+        <div>
+            <label for="description">Description</label>
+            <textarea name="description" id="description">{{item.description}}</textarea>
+        </div>
+
+      
+        
+        <button type="submit">Add</button>
+    </form>
+
+   
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <p>error: {{message}}</p>
+
+    {% else %}
+    <p>success: {{message}} </p>
+    {%endif%}
+
+    {% endfor %}
+</body>
+</html>
