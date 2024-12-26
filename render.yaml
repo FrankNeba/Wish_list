@@ -2,6 +2,6 @@ services:
   - type: web
     name: wish_list
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn your_project_name.wsgi:application
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn wish_list.wsgi:application
     staticPublishPath: staticfiles
