@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-40zd6kc%pvz3sz82=fql6z9xn@a+i0a^ujj028$h#f&=a8gqs#
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://wishlist-production-ceda.up.railway.app','https://wish-list-c8xh.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://wishlist-production-ceda.up.railway.app','https://wish-list-c8xh.onrender.com','https://wish-list-tu83.onrender.com']
 
 
 
