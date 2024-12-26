@@ -36,7 +36,7 @@ def login_view(request):
             login(request,user)
             return redirect('home')
         else: 
-            messages.error(request,'a problem')
+            messages.error(request,'Passwords don\'t match')
         
     return render(request, 'login.html')
 
@@ -49,7 +49,8 @@ def add_item(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         description = request.POST.get('description')
-        item = Wish(name = name, description = description, user = request.user)
+        image = request.FILES.get('image')
+        item = Wish(name = name, description = description, user = request.user, image = image)
         item.save()
         return redirect('home')
     return render(request, 'additem.html')
@@ -60,6 +61,8 @@ def edit_item(request, pk):
     if request.method == 'POST' and request.user == item.user:
         item.name = request.POST.get('name')
         item.description = request.POST.get('description')
+        if request.FILES.get('image'):
+            item.image = request.FILES.get('image')
         item.save()
         return redirect('home')
     

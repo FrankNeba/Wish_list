@@ -5,8 +5,19 @@ input{
     font-size: 18px;
     border-radius: 4px;
     color: rgb(87, 83, 83);
-    width: 700px;
+    width: 50%;
 
+
+}
+
+.error{
+    color: red;
+}
+
+@media(max-width: 400px){
+    input{
+        width: 95%;
+    }
 
 }
 
@@ -45,7 +56,7 @@ form div{
 }
 
 button{
-    width: 10%;
+    width: fit-content;
 }
 
 ul{
@@ -64,6 +75,8 @@ a{
 
 h3{
     color: rgb(129, 143, 6);
+    /* line-height: 1px; */
+    margin: 0px;
 
 }
 .wishbox{
@@ -75,7 +88,11 @@ h3{
     border-radius: 10%;
     background-color: rgb(55, 204, 204);
     margin-top: 15px;
-    padding: 5px;
+    padding: 15px;
+    padding-top: 15px;
+    display: flex;
+    gap: 3rem;
+    justify-items: flex-start;
 }
 #textToCopy{
     color: rgb(2, 48, 48);
@@ -92,7 +109,7 @@ h3{
 }
 
 .copy button{
-    padding: 0px;
+    padding: 0px 5px 0px 5px;
     font-weight: lighter;
     height: 32px;
     border-radius: 0px;
@@ -104,10 +121,12 @@ nav{
     /* background-color: rgb(231, 76, 76); */
     top: 0px;
     width: 100%;
+    background-color: rgb(245, 236, 236);
+    padding: 10px 8px 4px 0px;
 }
 
 button{
-    padding: 8px;
+    padding: 10px;
     border-style: none;
     color: white;
     font-weight: bolder;
@@ -120,4 +139,25 @@ button{
     display: flex;
     gap: 2rem;
     text-transform: capitalize;
+}
+
+img{
+    width: 400px;
+    height: fit-content;
+    border-radius: 10%;
+
+}
+
+@media(max-width: 400px){
+    img{
+        width: 50%;
+        height: 100%;
+    }
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between ;
+    /* background-color: red; */
+    padding-top: 0px;
 }

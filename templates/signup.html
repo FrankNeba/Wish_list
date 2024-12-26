@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
+    <link rel="icon" href="{% static 'icon/wish.webp' %}" type="image/x-icon">
+
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
 </head>
@@ -43,7 +45,7 @@
     </p>
     {% for message in messages %}
     {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-    <p>error: {{message}}</p>
+    <p class="error">Error: {{message}}</p>
 
     {% else %}
     <p>success: {{message}} </p>

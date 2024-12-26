@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{user.username}}'s Wishes</title>
+    <link rel="icon" href="{% static 'icon/wish.webp' %}" type="image/x-icon">
+
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
 </head>
@@ -16,68 +18,6 @@
    <p style="font-size: larger;">This contains a list of things {{user.username|capfirst}} Wishes to get for this festive period</p>
 
    
-   <div>
-    {% for wish in wishes%}
-    <div class="wishbox">
-        <h3 >
-            {{wish.name}}
-        </h3>
-
-        <p>{{wish.description}}</p>
-
-        {% if wish.user == request.user %}
-        <div class="update">
-            <a href="{% url 'edit' wish.id %}" style="color: rgb(0, 48, 0);">edit</a>
-
-            <a href="{% url 'delete' wish.id %}" style="color: red;">delete</a>
-
-        </div>
-        {% endif %}
-    </div>
-    {% endfor %}
-
-    </div>
-
-    {% if request.user == user %}
-    <p>Copy the link below and share for others to see your wish list</p>
-
-    <div class="copy">
-        <p id="textToCopy">
-            {{link}}{{user.username}}    
-        </p>
-        <button onclick="copyText()">Copy</button>
-       
-    </div>
-
-   
-   
-    <p id="copyMessage" style="color: green; display: none;">Text copied!</p>
-    {% else %}
-    <p style="font-size: larger;">
-        <a href="{% url 'signup' %}">Join</a>
-        and list your own christmas wishes
-    </p>
-    {%endif %}
-
-    <script>
-        function copyText() {
-            
-            const textElement = document.getElementById('textToCopy');
-            const text = textElement.textContent || textElement.innerText;
-
-            navigator.clipboard.writeText(text).then(() => {
-               
-                const message = document.getElementById('copyMessage');
-                message.style.display = 'block';
-
-                
-                setTimeout(() => {
-                    message.style.display = 'none';
-                }, 5000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
-        }
-    </script>
+  {% include 'wishlist.html' %}
 </body>
 </html>
