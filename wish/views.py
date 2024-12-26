@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
@@ -82,7 +82,10 @@ def home(request):
     return render(request, 'home.html', context)
 
 def wishes(request, username):
-    user = User.objects.get(username = username)
+    try:
+        user = User.objects.get(username = username)
+    except:
+        return HttpResponse('Page Not Found')
     domain = request.get_host()
     link = f'{domain}/'
     wishes = Wish.objects.filter(user__id = user.id)

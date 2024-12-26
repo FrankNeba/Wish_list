@@ -1,5 +1,5 @@
 services:
-  - type: web
+    type: web
     name: wish_list
     env: python
     buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
