@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-40zd6kc%pvz3sz82=fql6z9xn@a+i0a^ujj028$h#f&=a8gqs#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['https://wish-list-tu83.onrender.com', 'http://localhost:8000', 'http://127.0.0.1:8000']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','wish-list-tu83.onrender.com']
 CSRF_TRUSTED_ORIGINS = ['https://wishlist-production-ceda.up.railway.app','https://wish-list-c8xh.onrender.com','https://wish-list-tu83.onrender.com']
 
 
